@@ -4,9 +4,16 @@ import user.domain.User;
 import java.sql.*;
 
 public abstract class UserDao {
+
+    private SimpleConnectionMaker simpleConnectionMaker;
+    //Init
+    public UserDao(){
+        simpleConnectionMaker = new SimpleConnectionMaker();
+    }
     public void add(User user) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection c = getConnection();
+        //Connection c = getConnection();
+        Connection c = simpleConnectionMaker.makeNewConnection();
         PreparedStatement ps = c.prepareStatement(
                 "insert into users(id,name,password) values (?,?,?)");
         ps.setString(1, user.getId());
@@ -20,8 +27,8 @@ public abstract class UserDao {
 
     public User get(String id) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection c =getConnection();
-
+        //Connection c =getConnection();
+        Connection c = simpleConnectionMaker.makeNewConnection();
         PreparedStatement ps = c.prepareStatement(
                 "select * from users where id = ?");
         ps.setString(1, id);
