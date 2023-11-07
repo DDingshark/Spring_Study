@@ -1,14 +1,12 @@
 package user.dao;
-
 import user.domain.User;
 
 import java.sql.*;
 
-public class UserDao {
-    public void add(User user) throws ClassNotFoundException, SQLException{
+public abstract class UserDao {
+    public void add(User user) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection c= DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/spring_study","root","100101");
+        Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(
                 "insert into users(id,name,password) values (?,?,?)");
         ps.setString(1, user.getId());
@@ -20,16 +18,15 @@ public class UserDao {
 
     }
 
-    public User get(String id) throws ClassNotFoundException, SQLException{
+    public User get(String id) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        Connection c = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/spring_study","root","100101");
+        Connection c =getConnection();
 
         PreparedStatement ps = c.prepareStatement(
                 "select * from users where id = ?");
-        ps.setString(1,id);
+        ps.setString(1, id);
 
-        ResultSet rs  = ps.executeQuery();
+        ResultSet rs = ps.executeQuery();
         rs.next();
         User user = new User();
         user.setId(rs.getString("id"));
@@ -44,13 +41,17 @@ public class UserDao {
     }
 
 
+
+    /*
+
     private Connection getConnection() throws ClassNotFoundException, SQLException{
         Class.forName("com.mysql.jdbc.Driver");
         Connection c = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/spring_study","root","100101");
 
         return c;
-    }
-}
+    }    */
 
+    public abstract Connection getConnection() throws ClassNotFoundException, SQLException;
+}
 

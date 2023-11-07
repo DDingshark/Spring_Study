@@ -1,0 +1,26 @@
+
+]
+java:S1192"GDefine a constant instead of duplicating this literal "100101" 3 times.(øŒ…—
+
+java:S1192"iDefine a constant instead of duplicating this literal "jdbc:mysql://localhost:3306/spring_study" 3 times.(øŒ…—
+q
+java:S1192	"VDefine a constant instead of duplicating this literal "com.mysql.jdbc.Driver" 3 times.(¹µÖÁüÿÿÿÿ
+o
+java:S14881"YImmediately return this expression instead of assigning it to the temporary variable "c".(«ñÓ¬
+d
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(”ëªq
+^
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(«ñÓ¬
+d
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(”ëªq
+^
+java:S2095
+"HUse try-with-resources or close this "Connection" in a "finally" clause.(«ñÓ¬
+L
+java:S6437"6Revoke and change this password, as it is compromised.(øŒ…—
+L
+java:S6437"6Revoke and change this password, as it is compromised.(øŒ…—
+L
+java:S64372"6Revoke and change this password, as it is compromised.(øŒ…—
+H
+java:S1144/"2Remove this unused private "getConnection" method.(–çºÁ
