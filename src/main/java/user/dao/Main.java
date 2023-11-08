@@ -1,5 +1,7 @@
 package user.dao;
 
+import user.dao.OtherDAO.NUserDao;
+import user.dao.UserDao;
 import user.domain.User;
 
 import java.sql.SQLException;

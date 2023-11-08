@@ -1,4 +1,6 @@
 package user.dao;
+import user.dao.ConnectionMaker.ConnectionMaker;
+import user.dao.ConnectionMaker.DConnectionMaker;
 import user.domain.User;
 
 import java.sql.*;
@@ -6,14 +8,19 @@ import java.sql.*;
 public abstract class UserDao {
 
     private SimpleConnectionMaker simpleConnectionMaker;
-    //Init
-    public UserDao(){
+    private ConnectionMaker conectionMaker;
+    //INIT
+    public UserDao()
+    {
         simpleConnectionMaker = new SimpleConnectionMaker();
+        conectionMaker = new DConnectionMaker();
     }
     public void add(User user) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
         //Connection c = getConnection();
-        Connection c = simpleConnectionMaker.makeNewConnection();
+        //Connection c = simpleConnectionMaker.makeNewConnection();
+        Connection c = conectionMaker.makeConnection();
+
         PreparedStatement ps = c.prepareStatement(
                 "insert into users(id,name,password) values (?,?,?)");
         ps.setString(1, user.getId());
